@@ -36,6 +36,105 @@
   --font-mono: var(--font-mono);
 }
 
+/* ---- Per-tab accent themes -------------------------------------------------
+   Each tab sets data-theme on <body> (see app/theme.tsx). The accent
+   variables cascade, so every card / button / glow re-tints per tab.
+   --accent-rgb is the accent as "R, G, B" for rgba() alpha usage. */
+
+@property --color-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ff7d3c;
+}
+@property --color-accent-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffa169;
+}
+@property --color-accent-deep {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #b4470f;
+}
+
+:root {
+  --accent-rgb: 255, 125, 60;
+}
+
+body {
+  transition:
+    --color-accent 0.6s ease,
+    --color-accent-soft 0.6s ease,
+    --color-accent-deep 0.6s ease;
+}
+
+body[data-theme="today"] {
+  --color-accent: #f5b942;
+  --color-accent-soft: #ffd47e;
+  --color-accent-deep: #a8730a;
+  --accent-rgb: 245, 185, 66;
+}
+body[data-theme="todos"] {
+  --color-accent: #4ade80;
+  --color-accent-soft: #86efac;
+  --color-accent-deep: #15803d;
+  --accent-rgb: 74, 222, 128;
+}
+body[data-theme="archive"] {
+  --color-accent: #d4a373;
+  --color-accent-soft: #e6c39a;
+  --color-accent-deep: #8a5a2b;
+  --accent-rgb: 212, 163, 115;
+}
+body[data-theme="ego"] {
+  --color-accent: #a78bfa;
+  --color-accent-soft: #c4b5fd;
+  --color-accent-deep: #6d28d9;
+  --accent-rgb: 167, 139, 250;
+}
+body[data-theme="drift"] {
+  --color-accent: #f87171;
+  --color-accent-soft: #fca5a5;
+  --color-accent-deep: #b91c1c;
+  --accent-rgb: 248, 113, 113;
+}
+body[data-theme="twin"] {
+  --color-accent: #22d3ee;
+  --color-accent-soft: #67e8f9;
+  --color-accent-deep: #0e7490;
+  --accent-rgb: 34, 211, 238;
+}
+body[data-theme="agent"] {
+  --color-accent: #60a5fa;
+  --color-accent-soft: #93c5fd;
+  --color-accent-deep: #1d4ed8;
+  --accent-rgb: 96, 165, 250;
+}
+body[data-theme="graph"] {
+  --color-accent: #34d399;
+  --color-accent-soft: #6ee7b7;
+  --color-accent-deep: #047857;
+  --accent-rgb: 52, 211, 153;
+}
+body[data-theme="people"] {
+  --color-accent: #fb7185;
+  --color-accent-soft: #fda4af;
+  --color-accent-deep: #be123c;
+  --accent-rgb: 251, 113, 133;
+}
+body[data-theme="timeline"] {
+  --color-accent: #818cf8;
+  --color-accent-soft: #a5b4fc;
+  --color-accent-deep: #4338ca;
+  --accent-rgb: 129, 140, 248;
+}
+body[data-theme="sources"] {
+  --color-accent: #2dd4bf;
+  --color-accent-soft: #5eead4;
+  --color-accent-deep: #0f766e;
+  --accent-rgb: 45, 212, 191;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -60,12 +159,12 @@ body::before {
   background:
     radial-gradient(
       60rem 60rem at 12% -10%,
-      rgba(255, 125, 60, 0.18),
+      rgba(var(--accent-rgb), 0.18),
       transparent 60%
     ),
     radial-gradient(
       50rem 50rem at 105% 8%,
-      rgba(255, 125, 60, 0.1),
+      rgba(var(--accent-rgb), 0.1),
       transparent 55%
     ),
     radial-gradient(
@@ -152,7 +251,7 @@ body::after {
   border-radius: inherit;
   background: radial-gradient(
     16rem circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 125, 60, 0.13),
+    rgba(var(--accent-rgb), 0.13),
     transparent 60%
   );
   opacity: 0;
@@ -206,8 +305,8 @@ body::after {
   background: linear-gradient(180deg, var(--color-accent-soft), var(--color-accent));
   color: #1a0f08;
   box-shadow:
-    0 0 0 1px rgba(255, 125, 60, 0.4),
-    0 10px 30px -8px rgba(255, 125, 60, 0.5);
+    0 0 0 1px rgba(var(--accent-rgb), 0.4),
+    0 10px 30px -8px rgba(var(--accent-rgb), 0.5);
   transition:
     transform 0.18s ease,
     box-shadow 0.25s ease,
@@ -217,8 +316,8 @@ body::after {
   transform: translateY(-1px);
   filter: brightness(1.05);
   box-shadow:
-    0 0 0 1px rgba(255, 125, 60, 0.6),
-    0 16px 40px -8px rgba(255, 125, 60, 0.65);
+    0 0 0 1px rgba(var(--accent-rgb), 0.6),
+    0 16px 40px -8px rgba(var(--accent-rgb), 0.65);
 }
 .btn-accent:active {
   transform: translateY(0);
@@ -236,12 +335,12 @@ body::after {
 .btn-ghost:hover {
   color: var(--color-ink);
   border-color: var(--color-accent);
-  background: rgba(255, 125, 60, 0.06);
+  background: rgba(var(--accent-rgb), 0.06);
 }
 
 /* Amber text glow for emphasis. */
 .glow-text {
-  text-shadow: 0 0 24px rgba(255, 125, 60, 0.45);
+  text-shadow: 0 0 24px rgba(var(--accent-rgb), 0.45);
 }
 
 /* ---- Motion --------------------------------------------------------------- */
@@ -264,11 +363,11 @@ body::after {
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(255, 125, 60, 0.5);
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.5);
   }
   50% {
     opacity: 0.7;
-    box-shadow: 0 0 0 6px rgba(255, 125, 60, 0);
+    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0);
   }
 }
 .pulse-dot {

@@ -7,6 +7,7 @@ import {
 import "./globals.css";
 import Nav from "./nav";
 import { SmoothScroll, CursorGlow } from "./ui";
+import { RouteTheme } from "./theme";
 
 const display = Cormorant_Garamond({
   variable: "--font-display",
@@ -40,9 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${sans.variable} ${mono.variable} h-full`}
+      className={`${display.variable} ${sans.variable} ${mono.variable} h-full bg-paper`}
     >
       <body className="min-h-full antialiased">
+        <RouteTheme />
         <SmoothScroll />
         <CursorGlow />
         <Nav />

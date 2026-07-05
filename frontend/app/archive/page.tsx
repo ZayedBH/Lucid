@@ -225,7 +225,7 @@ export default function Archive() {
                 onClick={() => setMode(m)}
                 className={`cursor-pointer rounded-full px-5 py-2 font-mono text-[0.66rem] uppercase tracking-[0.2em] transition-colors ${
                   mode === m
-                    ? "bg-surface-2 text-ink shadow-[0_0_20px_-6px_rgba(255,125,60,0.5)]"
+                    ? "bg-surface-2 text-ink shadow-[0_0_20px_-6px_rgba(var(--accent-rgb),0.5)]"
                     : "text-faint hover:text-muted"
                 }`}
               >

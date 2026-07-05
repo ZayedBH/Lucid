@@ -96,7 +96,7 @@ export function CursorGlow() {
         marginLeft: "-13rem",
         marginTop: "-13rem",
         background:
-          "radial-gradient(circle, rgba(255,125,60,0.10), transparent 62%)",
+          "radial-gradient(circle, rgba(var(--accent-rgb),0.10), transparent 62%)",
         mixBlendMode: "screen",
       }}
     />

@@ -22,7 +22,7 @@ export default function Nav() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3">
-      <nav className="pointer-events-auto mt-4 flex max-w-full items-center gap-3 rounded-full border border-line-2 bg-paper/60 p-1.5 pl-2.5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7),0_0_30px_-10px_rgba(255,125,60,0.35)] backdrop-blur-2xl">
+      <nav className="pointer-events-auto mt-4 flex max-w-full items-center gap-3 rounded-full border border-line-2 bg-paper/60 p-1.5 pl-2.5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7),0_0_30px_-10px_rgba(var(--accent-rgb),0.35)] backdrop-blur-2xl">
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-2 pl-1"
@@ -52,7 +52,7 @@ export default function Nav() {
                 {active && (
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 -z-10 rounded-full bg-surface-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_0_22px_-6px_rgba(255,125,60,0.6)]"
+                    className="absolute inset-0 -z-10 rounded-full bg-surface-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_0_22px_-6px_rgba(var(--accent-rgb),0.6)]"
                   />
                 )}
                 {l.label}
@@ -89,7 +89,7 @@ function Mark() {
         <defs>
           <radialGradient id="irisGlow" cx="0.4" cy="0.4" r="0.7">
             <stop offset="0" stopColor="#ffd0ad" />
-            <stop offset="1" stopColor="#ff7d3c" />
+            <stop offset="1" stopColor="var(--color-accent)" />
           </radialGradient>
         </defs>
       </svg>
